@@ -1,2 +1,62 @@
-﻿  project_1.cpp
-  project_1.vcxproj -> C:\Users\steve\source\repos\project_1\x64\Debug\project_1.exe
+﻿  leaker.cpp
+C:\Users\steve\source\repos\project_1\leaker.cpp(91,19): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 1 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(91,19): message : consider using '%zu' in the format string
+C:\Users\steve\source\repos\project_1\leaker.cpp(91,19): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 2 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(91,19): message : consider using '%zu' in the format string
+C:\Users\steve\source\repos\project_1\leaker.cpp(91,19): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 3 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(91,19): message : consider using '%zu' in the format string
+C:\Users\steve\source\repos\project_1\leaker.cpp(105,19): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 1 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(105,19): message : consider using '%zu' in the format string
+C:\Users\steve\source\repos\project_1\leaker.cpp(108,19): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 1 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(108,19): message : consider using '%zu' in the format string
+C:\Users\steve\source\repos\project_1\leaker.cpp(111,19): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 1 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(111,19): message : consider using '%zu' in the format string
+C:\Users\steve\source\repos\project_1\leaker.cpp(394,19): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 3 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(394,19): message : consider using '%zu' in the format string
+C:\Users\steve\source\repos\project_1\leaker.cpp(434,19): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 3 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(434,19): message : consider using '%zu' in the format string
+C:\Users\steve\source\repos\project_1\leaker.cpp(449,19): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 3 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(449,19): message : consider using '%zu' in the format string
+C:\Users\steve\source\repos\project_1\leaker.cpp(449,19): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 6 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(449,19): message : consider using '%zu' in the format string
+C:\Users\steve\source\repos\project_1\leaker.cpp(455,19): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 3 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(455,19): message : consider using '%zu' in the format string
+C:\Users\steve\source\repos\project_1\leaker.cpp(455,19): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 6 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(455,19): message : consider using '%zu' in the format string
+C:\Users\steve\source\repos\project_1\leaker.cpp(485,45): warning C4311: 'type cast': pointer truncation from 'void *' to 'unsigned long'
+C:\Users\steve\source\repos\project_1\leaker.cpp(485,45): warning C4302: 'type cast': truncation from 'void *' to 'unsigned long'
+C:\Users\steve\source\repos\project_1\leaker.cpp(550,19): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 1 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(550,19): message : consider using '%zu' in the format string
+C:\Users\steve\source\repos\project_1\leaker.cpp(550,19): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 2 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(550,19): message : consider using '%zu' in the format string
+C:\Users\steve\source\repos\project_1\leaker.cpp(568,19): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 1 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(568,19): message : consider using '%zu' in the format string
+C:\Users\steve\source\repos\project_1\leaker.cpp(572,19): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 1 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(572,19): message : consider using '%zu' in the format string
+C:\Users\steve\source\repos\project_1\leaker.cpp(575,19): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 1 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(575,19): message : consider using '%zu' in the format string
+C:\Users\steve\source\repos\project_1\leaker.cpp(583,18): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 3 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(583,18): message : consider using '%zu' in the format string
+C:\Users\steve\source\repos\project_1\leaker.cpp(587,19): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 3 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(587,19): message : consider using '%zu' in the format string
+C:\Users\steve\source\repos\project_1\leaker.cpp(596,18): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 3 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(596,18): message : consider using '%zu' in the format string
+C:\Users\steve\source\repos\project_1\leaker.cpp(596,18): warning C4477: 'fprintf' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 5 has type 'size_t'
+C:\Users\steve\source\repos\project_1\leaker.cpp(596,18): message : consider using '%zu' in the format string
+  project_1.cpp
+C:\Users\steve\source\repos\project_1\LinkedList.h(499,21): error C2039: 'head': is not a member of 'LinkedList<int>::Node'
+C:\Users\steve\source\repos\project_1\LinkedList.h(34): message : see declaration of 'LinkedList<int>::Node'
+C:\Users\steve\source\repos\project_1\LinkedList.h(486): message : while compiling class template member function 'bool LinkedList<int>::operator ==(const LinkedList<int> &) const'
+C:\Users\steve\source\repos\project_1\project_1.cpp(327): message : see reference to function template instantiation 'bool LinkedList<int>::operator ==(const LinkedList<int> &) const' being compiled
+C:\Users\steve\source\repos\project_1\project_1.cpp(258): message : see reference to class template instantiation 'LinkedList<int>' being compiled
+C:\Users\steve\source\repos\project_1\LinkedList.h(499,41): error C2039: 'head': is not a member of 'LinkedList<int>::Node'
+C:\Users\steve\source\repos\project_1\LinkedList.h(34): message : see declaration of 'LinkedList<int>::Node'
+C:\Users\steve\source\repos\project_1\LinkedList.h(499,62): error C2039: 'tail': is not a member of 'LinkedList<int>::Node'
+C:\Users\steve\source\repos\project_1\LinkedList.h(34): message : see declaration of 'LinkedList<int>::Node'
+C:\Users\steve\source\repos\project_1\LinkedList.h(499,82): error C2039: 'tail': is not a member of 'LinkedList<int>::Node'
+C:\Users\steve\source\repos\project_1\LinkedList.h(34): message : see declaration of 'LinkedList<int>::Node'
+C:\Users\steve\source\repos\project_1\LinkedList.h(499,103): error C2039: 'Nodecount': is not a member of 'LinkedList<int>::Node'
+C:\Users\steve\source\repos\project_1\LinkedList.h(34): message : see declaration of 'LinkedList<int>::Node'
+C:\Users\steve\source\repos\project_1\LinkedList.h(499,128): error C2039: 'Nodecount': is not a member of 'LinkedList<int>::Node'
+C:\Users\steve\source\repos\project_1\LinkedList.h(34): message : see declaration of 'LinkedList<int>::Node'
+  Generating Code...

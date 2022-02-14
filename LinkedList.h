@@ -2,11 +2,13 @@
 #include <iostream>
 #include <vector>
 //#include "leaker.h"
-//had conceptual discussion with Daniel Marzo on 2/8/2022 at around 12:30
+//had conceptual discussion with Daniel Marzo on 2/8/2022 at around 12:30 pm
 //had conceptual discussion with Alex Duffaut on 2/10/2022 at around 9:00 am
 //had conceptual discussion with Alex Duffaut on 2/10/2022 at around 10:20 am
 //got help from micah grant on 2/12/2022 at around 9:30 am
-//got help from Abdullah Yuksel on 2/12/2022 at around 10:50 am
+//got help from Abdullah Yuksel on 2/12/2022 at around 10:50 am & around 12:00 pm to 1:00 pm
+//got help from Daniel Marzo on 2/14/2022 at around 11:30 am
+//got help from James Horn on 2/14/2022 at around 3:57 pm
 using namespace std;
 template <typename T>
 
@@ -332,16 +334,19 @@ void LinkedList<T>::InsertBefore(Node* node, const T& data)
 		prev_node = new Node;
 		prev_node->data = data;
 		node->prev = prev_node;
-		prev_node->data = data;
+		//prev_node->data = data;
 		prev_node->next = node;
 	}
 	else
 	{
+		
 		Node* new_node = new Node;
 		new_node->data = data;
 		new_node->prev = prev_node;
+		node->prev = new_node;
 		prev_node->next = new_node;
 		new_node->next = node;
+		
 	}
 	Nodecount = Nodecount + 1;
 }
@@ -367,19 +372,30 @@ template<typename T>
 void LinkedList<T>::InsertAt(const T& data, unsigned int index)
 {
 	//Node* new_node = new Node;
-	if (index >= Nodecount)
+	if (index == 0)
+	{
+		//Node* new_node = new Node;
+		//new_node
+		AddHead(data);
+		//Nodecount = Nodecount + 1;
+	}
+	else if (index > Nodecount)
 	{
 		throw out_of_range("Out of range error");
 	}
+	 else if (index == Nodecount)
+	{
+		AddTail(data);
+	}
 	else
 	{	
-		Node* new_node = new Node;
-		new_node = GetNode(index);
-		cout << new_node->data;
+		Node* new_node = GetNode(index);
+		//new_node = GetNode(index);
+		//cout << new_node->data;
 		InsertBefore(new_node, data);
-		
 	}
-	Nodecount = Nodecount + 1;
+	
+	//Nodecount = Nodecount + 1;
 }
 
 /*
@@ -454,7 +470,6 @@ LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>& rhs)
 	tail = nullptr;
 	Nodecount = 0;
 	//copy = list.head;
-	//does not work
 	for (unsigned int i = 0; i < rhs.NodeCount(); i++)
 	{
 		//copy = head
@@ -465,10 +480,37 @@ LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>& rhs)
 	return *this;
 }
 
+
 template<typename T>
-bool LinkedList<T>::operator==(const LinkedList<T>&) const
+bool LinkedList<T>::operator==(const LinkedList<T>& rhs) const
 {
-	return false;
+	Node* rhscurrent = rhs.head;
+	Node* thiscurrent = this->head;
+	bool equal = false;
+	unsigned int truecount = 0;
+	if (rhscurrent->Nodecount != Nodecount)
+	{
+		equal = false;
+	}
+	else
+	{
+		for (unsigned int i = 0; i < NodeCount(); i++)
+		{
+			if (thiscurrent->head == rhscurrent->head && thiscurrent->tail == rhscurrent->tail && thiscurrent->Nodecount == rhscurrent->Nodecount && thiscurrent->data == rhscurrent->data)
+			{
+				equal = true;
+			}
+			else
+			{
+				return false;
+				//break;
+			}
+			rhscurrent = rhscurrent->next;
+			thiscurrent = thiscurrent->next;
+		}
+	}
+	
+	return equal;
 }
 
 //destructor
@@ -509,7 +551,6 @@ LinkedList<T>::LinkedList(const LinkedList<T>& list)
 	Node* copy;
 	copy = list.head;
 	//copy = list.head;
-	//does not work
 	for (unsigned int i = 0; i < list.NodeCount(); i++)
 	{
 		//copy = head
