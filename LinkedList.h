@@ -30,7 +30,6 @@ public:
 	bool operator==(const LinkedList<T>&) const; //equality operator
 	//void FindAll(vector<Node*>&, const T&) const;
 	~LinkedList();
-	//T[3] = 4;
 	struct Node
 	{
 		Node* next;
