@@ -9,6 +9,7 @@
 //got help from Abdullah Yuksel on 2/12/2022 at around 10:50 am & around 12:00 pm to 1:00 pm
 //got help from Daniel Marzo on 2/14/2022 at around 11:30 am
 //got help from James Horn on 2/14/2022 at around 3:57 pm
+//got help from Daniel Marzo on 2/15/2022 at around 11:38 am
 using namespace std;
 template <typename T>
 
@@ -42,9 +43,16 @@ public:
 			prev = nullptr;
 		}
 	};
+	void PrintForwardRecursive(const Node*) const;
+	void PrintReverseRecursive(const Node*) const;
 	void InsertBefore(Node*, const T&);
 	void InsertAfter(Node*, const T&);
 	void InsertAt(const T&, unsigned int);
+	bool RemoveHead();
+	bool RemoveTail();
+	unsigned int Remove(const T& data);
+	bool RemoveAt(unsigned int index);
+	void Clear();
 	void FindAll(vector<Node*>&, const T&) const;
 	const Node* GetNode(unsigned int) const;
 	Node* GetNode(unsigned int);
@@ -322,6 +330,21 @@ typename LinkedList<T>::Node* LinkedList<T>::Find(const T& data)
 	}
 	return index_node;
 }
+/*
+This function takes in a pointer to a Node—a starting node. From that node,
+recursively visit each node that follows, in forward order, and print their values.
+This function MUST be implemented using recursion, or tests using it will be
+worth no points. Check your textbook for a reference on recursion.
+*/
+template<typename T>
+void typename LinkedList<T>::PrintForwardRecursive(const Node*) const
+{
+}
+//Same deal as PrintForwardRecursive, but in reverse.
+template<typename T>
+void typename LinkedList<T>::PrintReverseRecursive(const Node* node) const
+{
+}
 
 //insert the new node before the indicated node.
 template<typename T>
@@ -396,6 +419,126 @@ void LinkedList<T>::InsertAt(const T& data, unsigned int index)
 	}
 	
 	//Nodecount = Nodecount + 1;
+}
+
+//Deletes the first Node in the list. Returns whether or not the Node was removed.
+template<typename T>
+bool LinkedList<T>::RemoveHead()
+{
+	Node* current = head;
+	if (Nodecount > 1)
+	{
+		head = head->next;
+		delete head->prev;
+	}
+	else if (Nodecount == 1)
+	{
+		return false;
+	}
+	if (current == head)
+	{
+		return false;
+	}
+	else
+	{
+		this->Nodecount = Nodecount - 1;
+		return true;
+	}
+	
+}
+
+//Deletes the last Node, returning whether or not the operation was successful.
+template<typename T>
+bool LinkedList<T>::RemoveTail()
+{
+	
+	Node* current = tail;
+	if (Nodecount > 1)
+	{
+		tail = tail->prev;
+		this->Nodecount = Nodecount - 1;
+	}
+	else if (Nodecount == 1)
+	{
+		return false;
+	}
+	if (current == tail)
+	{
+		return false;
+	}
+	else
+	{
+		//this->Nodecount = Nodecount - 1;
+		return true;
+	}
+	
+}
+
+/*
+Remove ALL Nodes containing values matching that of the passed - in parameter.
+Returns how many instances were removed.
+*/
+template<typename T>
+unsigned int LinkedList<T>::Remove(const T& data)
+{
+
+	vector<LinkedList<T>::Node*> nodes;
+	FindAll(nodes, data);
+	for (unsigned int i = 0; i < sizeof(nodes); i++)
+	{
+
+	}
+	return 0;
+}
+
+/*
+* Deletes the index-th Node from the list, returning whether or not the operation
+was successful.
+*/
+template<typename T>
+bool LinkedList<T>::RemoveAt(unsigned int index)
+{
+	//Node* target = GetNode(index);
+	if (index == 0)
+	{
+		RemoveHead();
+	}
+	else if (index == Nodecount - 1)
+	{
+		RemoveTail();
+	}
+	else if (index > Nodecount)
+	{
+		return false;
+	}
+	else
+	{
+		Node* target = GetNode(index);
+		target->prev->next = target->next;
+		target->next->prev = target->prev;
+		this->Nodecount = Nodecount - 1; //prevents segmentation fault
+		Node* current = GetNode(index);
+		if (current->data != target->data)
+		{
+			//cout << "success!" << endl;
+			return true;
+		}
+		else
+		{
+			//cout << "fail!" << endl;
+			return false;
+		}
+	}
+	//return false;
+}
+
+/*
+* Deletes all Nodes. Don’t forget the node count—how many nodes do you have
+after you deleted all of them?
+*/
+template<typename T>
+void LinkedList<T>::Clear()
+{
 }
 
 /*
@@ -484,11 +627,12 @@ LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>& rhs)
 template<typename T>
 bool LinkedList<T>::operator==(const LinkedList<T>& rhs) const
 {
+	
 	Node* rhscurrent = rhs.head;
 	Node* thiscurrent = this->head;
 	bool equal = false;
-	unsigned int truecount = 0;
-	if (rhscurrent->Nodecount != Nodecount)
+	//unsigned int truecount = 0;
+	if (rhs.NodeCount() != Nodecount)
 	{
 		equal = false;
 	}
@@ -496,7 +640,7 @@ bool LinkedList<T>::operator==(const LinkedList<T>& rhs) const
 	{
 		for (unsigned int i = 0; i < NodeCount(); i++)
 		{
-			if (thiscurrent->head == rhscurrent->head && thiscurrent->tail == rhscurrent->tail && thiscurrent->Nodecount == rhscurrent->Nodecount && thiscurrent->data == rhscurrent->data)
+			if (thiscurrent->data == rhscurrent->data)
 			{
 				equal = true;
 			}
@@ -521,7 +665,7 @@ LinkedList<T>::~LinkedList()
 	while (head)
 	{
 		destroy_next = head->next;
-		delete head;
+		delete head;//hit f10 for this
 		head = destroy_next;
 	}
 }

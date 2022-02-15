@@ -223,6 +223,7 @@ void TestAssignment()
 
 */
 
+/*
 //TEST 3
 
 #include <iostream>
@@ -333,10 +334,11 @@ void Testcomparison()
 		cout << "the comparison function does not work!";
 	}
 }
+*/
 
 //TEST 4
-/*
-* #include <iostream>
+
+#include <iostream>
 #include <string>
 #include <sstream>
 #include "LinkedList.h"
@@ -480,4 +482,3 @@ void TestRecursion()
 	node = power2.Find(512);
 	power2.PrintReverseRecursive(node);
 }
-*/
