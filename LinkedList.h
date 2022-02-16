@@ -10,6 +10,7 @@
 //got help from Daniel Marzo on 2/14/2022 at around 11:30 am
 //got help from James Horn on 2/14/2022 at around 3:57 pm
 //got help from Daniel Marzo on 2/15/2022 at around 11:38 am
+//got help from Joshua Fox (the man himself) on 2/16/2022 at around 10:00 am
 using namespace std;
 template <typename T>
 
@@ -53,6 +54,7 @@ public:
 	bool RemoveAt(unsigned int index);
 	void Clear();
 	void FindAll(vector<Node*>&, const T&) const;
+	vector<unsigned int> index(vector<unsigned int>&, const T&);
 	const Node* GetNode(unsigned int) const;
 	Node* GetNode(unsigned int);
 	Node* Head();
@@ -336,13 +338,29 @@ This function MUST be implemented using recursion, or tests using it will be
 worth no points. Check your textbook for a reference on recursion.
 */
 template<typename T>
-void typename LinkedList<T>::PrintForwardRecursive(const Node*) const
+void LinkedList<T>::PrintForwardRecursive(const Node* node) const
 {
+	//Node* current = node;
+	//node = current; //temporary to get zybooks to shut up
+	if (node != nullptr)
+	{
+		cout << node->data << endl;
+		PrintForwardRecursive(node->next);
+	}
+	//PrintForwardRecursive(node->next);
 }
 //Same deal as PrintForwardRecursive, but in reverse.
 template<typename T>
-void typename LinkedList<T>::PrintReverseRecursive(const Node* node) const
+void LinkedList<T>::PrintReverseRecursive(const Node* node) const
 {
+	//Node* current = node;
+	//node = current; //temporary to get zybooks to shut up
+	if (node != nullptr)
+	{
+		cout << node->data << endl;
+		PrintReverseRecursive(node->prev);
+	}
+	//PrintReverseRecursive(node->prev);
 }
 
 //insert the new node before the indicated node.
@@ -424,15 +442,23 @@ void LinkedList<T>::InsertAt(const T& data, unsigned int index)
 template<typename T>
 bool LinkedList<T>::RemoveHead()
 {
+	
 	Node* current = head;
 	if (Nodecount > 1)
 	{
 		head = head->next;
 		delete head->prev;
+		head->prev = nullptr;
+		this->Nodecount = Nodecount - 1;
 	}
 	else if (Nodecount == 1)
 	{
-		return false;
+		delete head;
+		//head = new Node;
+		head = nullptr;
+		tail = head;
+		this->Nodecount = Nodecount - 1;
+		return true;
 	}
 	if (current == head)
 	{
@@ -440,9 +466,11 @@ bool LinkedList<T>::RemoveHead()
 	}
 	else
 	{
-		this->Nodecount = Nodecount - 1;
+		//this->Nodecount = Nodecount - 1;
 		return true;
 	}
+	
+	//return false;
 	
 }
 
@@ -455,11 +483,18 @@ bool LinkedList<T>::RemoveTail()
 	if (Nodecount > 1)
 	{
 		tail = tail->prev;
+		//this->Nodecount = Nodecount - 1;
+		delete tail->next;
+		tail->next = nullptr;
 		this->Nodecount = Nodecount - 1;
 	}
 	else if (Nodecount == 1)
 	{
-		return false;
+		delete tail;
+		tail = nullptr;
+		head = tail;
+		this->Nodecount = Nodecount - 1;
+		return true;
 	}
 	if (current == tail)
 	{
@@ -470,6 +505,7 @@ bool LinkedList<T>::RemoveTail()
 		//this->Nodecount = Nodecount - 1;
 		return true;
 	}
+
 	
 }
 
@@ -481,15 +517,50 @@ template<typename T>
 unsigned int LinkedList<T>::Remove(const T& data)
 {
 
-	vector<LinkedList<T>::Node*> nodes;
-	FindAll(nodes, data);
-	for (unsigned int i = 0; i < sizeof(nodes); i++)
+	//vector<LinkedList<T>::Node*> nodes;
+	//FindAll(nodes, data);
+	//vector<unsigned int> indexes;
+	//indexes.reserve(0);
+	//index(indexes, data);
+	unsigned int index = 0;
+	Node* current = head;
+	for (unsigned int i = 0; i < Nodecount; i++)
 	{
-
+		//even with a diagram it took me and hour to accidentally solve this problem
+		if (current->data == data)
+		{
+			current = current->next;
+			RemoveAt(i);
+			current = current->next; //this is needed to index after deletion. This is my "accident".
+			index++;
+		}
+		else
+		{
+			current = current->next;
+		}
 	}
-	return 0;
+	return index;
 }
-
+/*
+//custom function
+template <typename T>
+vector<unsigned int> LinkedList<T>::index(vector<unsigned int>& index_vector, const T& data)
+{
+	Node* current = head;
+	//unsigned int index = 0;
+	for (unsigned int i = 0; i < NodeCount(); i++)
+	{
+		if (current->data == data)
+		{
+			index_vector.push_back(i);
+			//cout << "index is: " << i << endl;
+		}
+		current = current->next;
+		//index = index + 1;
+	}
+	return index_vector;
+}
+*/
 /*
 * Deletes the index-th Node from the list, returning whether or not the operation
 was successful.
@@ -498,6 +569,7 @@ template<typename T>
 bool LinkedList<T>::RemoveAt(unsigned int index)
 {
 	//Node* target = GetNode(index);
+	bool torf = false;
 	if (index == 0)
 	{
 		RemoveHead();
@@ -508,7 +580,8 @@ bool LinkedList<T>::RemoveAt(unsigned int index)
 	}
 	else if (index > Nodecount)
 	{
-		return false;
+		torf = false;
+		//return false;
 	}
 	else
 	{
@@ -516,19 +589,22 @@ bool LinkedList<T>::RemoveAt(unsigned int index)
 		target->prev->next = target->next;
 		target->next->prev = target->prev;
 		this->Nodecount = Nodecount - 1; //prevents segmentation fault
+		delete target;
 		Node* current = GetNode(index);
 		if (current->data != target->data)
 		{
 			//cout << "success!" << endl;
-			return true;
+			 torf = true;
+			//return true;
 		}
 		else
 		{
 			//cout << "fail!" << endl;
-			return false;
+			torf = false;
+			//return false;
 		}
 	}
-	//return false;
+	return torf;
 }
 
 /*
@@ -538,6 +614,29 @@ after you deleted all of them?
 template<typename T>
 void LinkedList<T>::Clear()
 {
+	for (unsigned int i = 0; i < NodeCount(); i++)
+	{
+		RemoveHead();
+	}
+	for (unsigned int i = 0; i < NodeCount(); i++)
+	{
+		RemoveTail();
+	}
+	RemoveHead();
+	/*
+	if (Head() == nullptr)
+	{
+		cout << "Head is null!" << endl;
+	}
+	if (Tail() == nullptr)
+	{
+		cout << "Tail is null!" << endl;
+	}
+	if (NodeCount() == 0)
+	{
+		cout << "Nodecount is 0!" << endl;
+	}
+	*/
 }
 
 /*

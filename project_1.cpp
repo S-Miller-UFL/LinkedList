@@ -348,6 +348,7 @@ void TestRemove();
 void TestRemoveHeadTail();
 void TestOtherRemoval();
 void TestRecursion();
+void TestClear();
 
 int main()
 {
@@ -355,12 +356,15 @@ int main()
 	cin >> testNum;
 	if (testNum == 1)
 		TestRemove();
-   else if (testNum == 2)
-      TestRemoveHeadTail();
-   else if (testNum == 3)
-      TestOtherRemoval();
-   else if (testNum == 4)
-      TestRecursion();
+	else if (testNum == 2)
+		TestRemoveHeadTail();
+	else if (testNum == 3)
+		TestOtherRemoval();
+	else if (testNum == 4)
+		TestRecursion();
+	else if (testNum == 5)
+		TestClear();
+
       
 	return 0;
 }
@@ -481,4 +485,31 @@ void TestRecursion()
 	cout << "Printing recursively in reverse from 512: " << endl;
 	node = power2.Find(512);
 	power2.PrintReverseRecursive(node);
+}
+
+void TestClear()
+{
+	cout << "testing Clear()" << endl;
+	LinkedList<string> data;
+	data.AddTail("Batman");
+	data.AddTail("RemoveMe");
+	data.AddTail("Superman");
+	data.AddTail("RemoveMe");
+	data.AddTail("Wonder Woman");
+	data.AddTail("RemoveMe");
+	data.AddTail("The Flash");
+
+	cout << "Initial list: " << endl;
+	data.PrintForward();
+	cout << "calling clear()..." << endl;
+	data.Clear();
+	if (data.NodeCount() == 0)
+	{
+		cout << "success!!" << endl;
+	}
+	else
+	{
+		cout << "fail!" << endl;
+		data.PrintForward();
+	}
 }
